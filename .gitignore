@@ -1,5 +1,7 @@
 # Prerequisites
 *.d
+animal
+objs
 
 # Compiled Object files
 *.slo
