@@ -5,7 +5,7 @@
 
 #define NEURON 100
 class Brain {
-	protected :
+	private :
 		std::string ideas[NEURON];
 	public :
 		Brain();

@@ -8,7 +8,12 @@ Cat::Cat() : Animal() {
 }
 
 Cat::Cat(const Cat &other) : Animal(other){
-	this->brain = other.brain;
+	if (other.brain != 0) {
+		this->brain = new Brain();
+		*this->brain = *other.brain;
+	} else {
+		this->brain = 0;
+	}
 	this->type = other.type;
 	std::cout << "Cat: " << "Copy Constructor called." << std::endl;
 }
@@ -22,7 +27,15 @@ Cat &Cat::operator=(const Cat &other) {
 	std::cout << "Cat: " << "Copy assignment operator called." << std::endl;
 	if (this != &other) {
 		Animal::operator=(other);
-		this->brain = other.brain;
+		if (this->brain) {
+			delete this->brain;
+		}
+		if (other.brain != 0) {
+			this->brain = new Brain();
+			*this->brain = *other.brain;
+		} else {
+			this->brain = 0;
+		}
 		this->type = other.type;
 	}
 	return (*this);
