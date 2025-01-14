@@ -2,6 +2,8 @@
 *.d
 animal
 objs
+animal_with_brain
+animal_abstract
 
 # Compiled Object files
 *.slo

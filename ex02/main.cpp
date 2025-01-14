@@ -14,16 +14,6 @@ int main()
 			delete i;
 		}
 		{
-			std::cout << "----normal test----" << std::endl;
-			const Animal* j = new Animal();
-			const Animal* i = new Animal();
-			std::cout << "Animal Type: " << j->getType() << " " << std::endl;
-			j->makeSound();
-			std::cout << "Animal Type: " << i->getType() << " " << std::endl;
-			delete j;
-			delete i;
-		}
-		{
 			std::cout << "-------------------" << std::endl;
 			std::cout << "----deep copy test(cat copy constructor)----" << std::endl;
 			Cat cat;
@@ -66,4 +56,18 @@ int main()
         std::cout << "Exception caught: " << e.what() << std::endl;
     }
 	return 0;
+}
+
+// case 2
+// int main() {
+// 	{
+// 		std::cout << "----normal test----" << std::endl;
+// 		const Animal* j = new Animal();
+// 		const Animal* i = new Animal();
+// 		std::cout << "Animal Type: " << j->getType() << " " << std::endl;
+// 		j->makeSound();
+// 		std::cout << "Animal Type: " << i->getType() << " " << std::endl;
+// 		delete j;
+// 		delete i;
+// 	}
 }

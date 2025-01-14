@@ -1,7 +1,7 @@
 CPP = c++
 CPP_FLAGS = -Wall -Werror -Wextra -std=c++98
 
-PROGRAM_NAME = animal
+PROGRAM_NAME = animal_abstract
 
 SRCDIR := .
 CLASSDIR := $(SRCDIR)/class
