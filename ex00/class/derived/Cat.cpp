@@ -6,7 +6,7 @@ Cat::Cat() : Animal() {
 	std::cout << "Cat: " << "Default Constructor called." << std::endl;
 }
 
-Cat::Cat(const Cat &other) {
+Cat::Cat(const Cat &other) : Animal(other){
 	this->type = other.type;
 	std::cout << "Cat: " << "Copy Constructor called." << std::endl;
 }
@@ -18,6 +18,7 @@ Cat::~Cat() {
 Cat &Cat::operator=(const Cat &other) {
 	std::cout << "Cat: " << "Copy assignment operator called." << std::endl;
 	if (this != &other) {
+		Animal::operator=(other);
 		this->type = other.type;
 	}
 	return (*this);

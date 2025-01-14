@@ -8,7 +8,12 @@ int main()
 	try {
 		const Animal* j = new Dog();
 		const Animal* i = new Cat();
-		delete j;//should not create a leak
+		Cat cat;
+		cat.randomSet();
+		cat.showBrain();
+		j->showBrain();
+		i->showBrain();
+		delete j;
 		delete i;
 	} catch (const std::exception &e) {
         std::cout << "Exception caught: " << e.what() << std::endl;

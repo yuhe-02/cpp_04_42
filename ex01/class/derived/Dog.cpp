@@ -2,22 +2,27 @@
 #include <iostream>
 
 Dog::Dog() : Animal() {
+	this->brain = new Brain();
 	this->type = "Dog";
 	std::cout << "Dog: " << "Default Constructor called." << std::endl;
 }
 
-Dog::Dog(const Dog &other) {
+Dog::Dog(const Dog &other) : Animal(other){
+	this->brain = other.brain;
 	this->type = other.type;
 	std::cout << "Dog: " << "Copy Constructor called." << std::endl;
 }
 
 Dog::~Dog() {
 	std::cout << "Dog: " << "Destructor called." << std::endl;
+	delete brain;
 }
 
 Dog &Dog::operator=(const Dog &other) {
 	std::cout << "Dog: " << "Copy assignment operator called." << std::endl;
 	if (this != &other) {
+		Animal::operator=(other);
+		this->brain = other.brain;
 		this->type = other.type;
 	}
 	return (*this);
@@ -25,4 +30,23 @@ Dog &Dog::operator=(const Dog &other) {
 
 void Dog::makeSound() const{
 	std::cout << this->getType() << ": "<< "Woof! Woof!" << std::endl;
+}
+
+void Dog::showBrain( void ) const {
+	if (!this->brain) {
+		std::cout << "Dog: " << "doesn't have brain." << std::endl;
+		return ;
+	}
+	this->brain->showAll();
+}
+
+void Dog::randomSet( void ) {
+	if (!this->brain) {
+		std::cout << "Dog: " << "doesn't have brain." << std::endl;
+		return ;
+	}
+	this->brain->setIdeas(0, "dog");
+	this->brain->setIdeas(2, "dog1");
+	this->brain->setIdeas(3, "dog2");
+	this->brain->setIdeas(4, "dog3");
 }
