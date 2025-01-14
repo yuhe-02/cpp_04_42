@@ -1,51 +1,44 @@
 CPP = c++
 CPP_FLAGS = -Wall -Werror -Wextra -std=c++98
 
-PROGRAM_NAME = animal
+PROGRAM_NAME = materia
 
-SRCDIR := .
-CLASSDIR := $(SRCDIR)/class
-BASEDIR := $(CLASSDIR)/base
-DERIVEDDIR := $(CLASSDIR)/derived
-INCDIR := ./includes
+SRC_DIR := src
+CLASS_DIR := class
+INTERFACE_DIR := interface
+IMPLEMENT_DIR := implement
 
-SRC := $(wildcard $(SRCDIR)/*.cpp) \
-       $(wildcard $(CLASSDIR)/*.cpp) \
-       $(wildcard $(BASEDIR)/*.cpp) \
-       $(wildcard $(DERIVEDDIR)/*.cpp)
+SRC_PATH = ./$(SRC_DIR)
+CLASS_PATH := $(SRC_PATH)/$(CLASS_DIR)
+INTERFACE_PATH := $(CLASS_PATH)/$(INTERFACE_DIR)
+IMPLEMENT_PATH := $(CLASS_PATH)/$(IMPLEMENT_DIR)
 
-INCLUDES := -I$(INCDIR)
+INC_DIR := ./includes
 
-OBJDIR := objs
-OBJS := $(SRC:$(SRCDIR)/%.cpp=$(OBJDIR)/$(SRCDIR)/%.o)
-OBJS := $(OBJS:$(CLASSDIR)/%.cpp=$(OBJDIR)/$(CLASSDIR)/%.o)
-OBJS := $(OBJS:$(BASEDIR)/%.cpp=$(OBJDIR)/$(BASEDIR)/%.o)
-OBJS := $(OBJS:$(DERIVEDDIR)/%.cpp=$(OBJDIR)/$(DERIVEDDIR)/%.o)
+# 適宜更新する
+SRC := $(wildcard $(SRC_PATH)/*.cpp) \
+       $(wildcard $(CLASS_PATH)/*.cpp) \
+       $(wildcard $(INTERFACE_PATH)/*.cpp) \
+       $(wildcard $(IMPLEMENT_PATH)/*.cpp)
+
+# 適宜更新する
+INCLUDES := -I$(INC_DIR)/$(INTERFACE_DIR) \
+			-I$(INC_DIR)/$(IMPLEMENT_DIR)
+
+OBJ_DIR := objs
+OBJS := $(patsubst $(SRC_PATH)/%.cpp, $(OBJ_DIR)/%.o, $(SRC))
 
 all: $(PROGRAM_NAME)
 
 $(PROGRAM_NAME): $(OBJS)
 	$(CPP) $(CPP_FLAGS) $(INCLUDES) -o $@ $^
 
-$(OBJDIR):
-	@mkdir -p $(OBJDIR)/$(CLASSDIR)
-	@mkdir -p $(OBJDIR)/$(BASEDIR)
-	@mkdir -p $(OBJDIR)/$(DERIVEDDIR)
-
-$(OBJDIR)/%.o: $(SRCDIR)/%.cpp | $(OBJDIR)
-	$(CPP) $(CPP_FLAGS) $(INCLUDES) -o $@ -c $<
-
-$(OBJDIR)/$(CLASSDIR)/%.o: $(CLASSDIR)/%.cpp | $(OBJDIR)
-	$(CPP) $(CPP_FLAGS) $(INCLUDES) -o $@ -c $<
-
-$(OBJDIR)/$(BASEDIR)/%.o: $(BASEDIR)/%.cpp | $(OBJDIR)
-	$(CPP) $(CPP_FLAGS) $(INCLUDES) -o $@ -c $<
-
-$(OBJDIR)/$(DERIVEDDIR)/%.o: $(DERIVEDDIR)/%.cpp | $(OBJDIR)
-	$(CPP) $(CPP_FLAGS) $(INCLUDES) -o $@ -c $<
+$(OBJ_DIR)/%.o: $(SRC_PATH)/%.cpp
+	@mkdir -p $(dir $@)
+	$(CPP) $(CPP_FLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	rm -rf $(OBJDIR)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(PROGRAM_NAME)
