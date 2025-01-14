@@ -1,6 +1,7 @@
 #ifndef __IMATERIASOURCE_HPP__
 # define __IMATERIASOURCE_HPP__
 
+# include <string>
 class IMateriaSource {
 	protected:
 		//

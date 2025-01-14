@@ -2,6 +2,7 @@
 # define __ICE_HPP__
 
 #include "AMateria.hpp"
+# include <string>
 class Ice : public AMateria {
 	protected:
 		//

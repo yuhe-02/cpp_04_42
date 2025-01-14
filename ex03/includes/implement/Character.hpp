@@ -3,6 +3,7 @@
 
 
 #include "ICharacter.hpp"
+# include <string>
 class Character : public ICharacter {
 	protected:
 		//

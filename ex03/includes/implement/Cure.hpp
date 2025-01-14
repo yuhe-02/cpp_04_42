@@ -2,6 +2,7 @@
 # define __CURE_HPP__
 
 #include "AMateria.hpp"
+# include <string>
 class Cure : public AMateria {
 	protected:
 		//
