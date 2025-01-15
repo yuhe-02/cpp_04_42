@@ -4,13 +4,14 @@
 #include "AMateria.hpp"
 # include <string>
 class Cure : public AMateria {
-	protected:
-		//
 	public:
 		Cure();
 		~Cure();
 		Cure(const Cure& other);
+		// Cure(std::string const & type);
 		Cure& operator=(const Cure &other);
+		Cure* clone() const;
+		// virtual void use(ICharacter& target);
 };
 
 #endif
