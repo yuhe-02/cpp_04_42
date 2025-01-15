@@ -14,10 +14,10 @@ Cure::~Cure() {
 }
 
 Cure &Cure::operator=(const Cure &other) {
-	std::cout << "Cure: " << "Copy assignment operator called." << std::endl;
 	if (this != &other) {
 		AMateria::operator=(other);
 	}
+	std::cout << "Cure: " << "Copy assignment operator called." << std::endl;
 	return (*this);
 }
 
@@ -26,6 +26,6 @@ void Cure::use(ICharacter& target) {
 }
 
 Cure* Cure::clone() const {
-	Cure *cure = new Cure();
+	Cure *cure = new Cure(*this);
 	return (cure);
 }

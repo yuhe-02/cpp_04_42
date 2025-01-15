@@ -14,10 +14,10 @@ Ice::~Ice() {
 }
 
 Ice &Ice::operator=(const Ice &other) {
-	std::cout << "Ice: " << "Copy assignment operator called." << std::endl;
 	if (this != &other) {
 		AMateria::operator=(other);
 	}
+	std::cout << "Ice: " << "Copy assignment operator called." << std::endl;
 	return (*this);
 }
 
@@ -26,6 +26,6 @@ void Ice::use(ICharacter& target) {
 }
 
 Ice* Ice::clone() const {
-	Ice *ice = new Ice();
+	Ice *ice = new Ice(*this);
 	return (ice);
 }
