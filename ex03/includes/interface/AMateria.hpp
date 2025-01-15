@@ -6,7 +6,7 @@
 # include "ICharacter.hpp"
 class AMateria {
 	protected:
-		std::string	type_;
+		const std::string	type_;
 	public:
 		AMateria();
 		virtual ~AMateria();
@@ -15,6 +15,6 @@ class AMateria {
 		AMateria(std::string const & type);
 		std::string const & getType() const;
 		virtual AMateria* clone() const = 0;
-		// virtual void use(ICharacter& target);
+		virtual void use(ICharacter& target);
 };
 #endif

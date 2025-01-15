@@ -8,10 +8,9 @@ class Cure : public AMateria {
 		Cure();
 		~Cure();
 		Cure(const Cure& other);
-		// Cure(std::string const & type);
 		Cure& operator=(const Cure &other);
 		Cure* clone() const;
-		// virtual void use(ICharacter& target);
+		void use(ICharacter& target);
 };
 
 #endif

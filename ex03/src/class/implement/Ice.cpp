@@ -21,9 +21,9 @@ Ice &Ice::operator=(const Ice &other) {
 	return (*this);
 }
 
-// void Ice::use(ICharacter& target) {
-// 	std::cout << "Ice: " << "* heals " << target.getName() << "'s wounds *" << std::endl;
-// }
+void Ice::use(ICharacter& target) {
+	std::cout << "Ice: " << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+}
 
 Ice* Ice::clone() const {
 	Ice *ice = new Ice();
