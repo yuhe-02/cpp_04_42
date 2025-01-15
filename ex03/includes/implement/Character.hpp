@@ -6,6 +6,7 @@
 #include "AMateria.hpp"
 # include <string>
 #define MAX_EQUIP 4
+// TODO define overloaded function
 class Character : public ICharacter {
 	private :
 		std::string name_;

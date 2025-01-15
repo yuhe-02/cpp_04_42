@@ -75,3 +75,5 @@ void Character::equip(AMateria* m) {
 	this->equipments_[this->equip_num_] = m;
 	this->equip_num_++;
 }
+
+// TODO define overloaded function

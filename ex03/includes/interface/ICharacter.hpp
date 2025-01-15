@@ -4,6 +4,7 @@
 # include <string>
 # include "AMateria.hpp"
 class AMateria;
+// TODO refresh commentout regarding pure virtual function
 class ICharacter {
 	public:
 		ICharacter();
