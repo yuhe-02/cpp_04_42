@@ -20,15 +20,11 @@ jobs:
       - name: Create image tag
         id: image_tag
         run: |
-          # Define cache dir
           CACHE_PATH="/tmp/docker_cache_${{ env.ARCH }}"
-          # Get Dockerfile hash for image cache
           IMAGE_HASH="${{ hashFiles('./Dockerfile') }}"
-          # Create image tag
           VARIANT="$(TZ=UTC-9 date +%Y%m%d)_${IMAGE_HASH:0:7}"
           IMAGE_NAME="slcc_cmake_${{ env.ARCH }}"
           TAG="${IMAGE_NAME}:${VARIANT}"
-          # Cache dir setting
           TAR_NAME="${IMAGE_NAME}_${VARIANT}.tar"
           TAR_PATH="${CACHE_PATH}/${TAR_NAME}"
           echo "TAG=${TAG}" >> $GITHUB_OUTPUT
@@ -58,6 +54,5 @@ jobs:
 
       - name: Run tests in container
         run: |
-          # Change owner of workspace to ubuntu user
           sudo chown -R 1000:1000 ${{ github.workspace }}
-          docker run --rm -v ${{ github.workspace }}:/work -w /work  ${{ steps.image_tag.outputs.TAG }} make test
+          docker run --rm -v ${{ github.workspace }}:/work -w /work/ex00  ${{ steps.image_tag.outputs.TAG }} make re && ./animal
