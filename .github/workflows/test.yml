@@ -55,4 +55,4 @@ jobs:
       - name: Run tests in container
         run: |
           sudo chown -R 1000:1000 ${{ github.workspace }}
-          docker run --rm -v ${{ github.workspace }}:/work -w /work  ${{ steps.image_tag.outputs.TAG }} make test
+          docker run --rm -v ${{ github.workspace }}:/work -w /work  ${{ steps.image_tag.outputs.TAG }} make -d test
