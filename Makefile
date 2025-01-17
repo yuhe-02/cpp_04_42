@@ -12,22 +12,22 @@ test:
 	@echo "Building in ex00 directory..."
 	$(MAKE) -C $(EX00_DIR) all
 	@echo "Running ex00 program..."
-	@bash $(TESTS_DIR)/test00.sh
+	@bash $(TESTS_DIR)/test00.bash
 
 	@echo "Building in ex01 directory..."
 	$(MAKE) -C $(EX01_DIR) all
 	@echo "Running ex01 program..."
-	@bash $(TESTS_DIR)/test01.sh
+	@bash $(TESTS_DIR)/test01.bash
 
 	@echo "Building in ex02 directory..."
 	$(MAKE) -C $(EX02_DIR) all
 	@echo "Running ex02 program..."
-	@bash $(TESTS_DIR)/test02.sh
+	@bash $(TESTS_DIR)/test02.bash
 
 	@echo "Building in ex03 directory..."
 	$(MAKE) -C $(EX03_DIR) all
 	@echo "Running ex03 program..."
-	@bash $(TESTS_DIR)/test03.sh
+	@bash $(TESTS_DIR)/test03.bash
 clean:
 	@echo "Cleaning ex00 directory..."
 	$(MAKE) -C $(EX00_DIR) clean
