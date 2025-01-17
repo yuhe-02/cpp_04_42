@@ -6,27 +6,28 @@ EX02_DIR = ex02
 EX02_OUT = animal_abstract
 EX03_DIR = ex03
 EX03_OUT = materia
+TESTS_DIR = tests
 
 test:
 	@echo "Building in ex00 directory..."
 	$(MAKE) -C $(EX00_DIR) all
 	@echo "Running ex00 program..."
-	$(EX00_DIR)/$(EX00_OUT)
+	@bash $(TESTS_DIR)/test00.sh
 
 	@echo "Building in ex01 directory..."
 	$(MAKE) -C $(EX01_DIR) all
 	@echo "Running ex01 program..."
-	$(EX01_DIR)/$(EX01_OUT)
+	@bash $(TESTS_DIR)/test01.sh
 
 	@echo "Building in ex02 directory..."
 	$(MAKE) -C $(EX02_DIR) all
 	@echo "Running ex02 program..."
-	$(EX02_DIR)/$(EX02_OUT)
+	@bash $(TESTS_DIR)/test02.sh
 
 	@echo "Building in ex03 directory..."
 	$(MAKE) -C $(EX03_DIR) all
 	@echo "Running ex03 program..."
-	$(EX03_DIR)/$(EX03_OUT)
+	@bash $(TESTS_DIR)/test03.sh
 clean:
 	@echo "Cleaning ex00 directory..."
 	$(MAKE) -C $(EX00_DIR) clean

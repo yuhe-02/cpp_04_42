@@ -10,7 +10,6 @@
 class Character : public ICharacter {
 	private :
 		std::string name_;
-		int		  equip_num_;
 		AMateria* equipments_[MAX_EQUIP];
 		bool	  free_responsible_[MAX_EQUIP];
 	public:
@@ -20,8 +19,9 @@ class Character : public ICharacter {
 		Character(const Character& other);
 		Character& operator=(const Character &other);
 		std::string const & getName() const;
+		AMateria *getEquipment(int idx);
 		void equip(AMateria* m);
-		// void unequip(int idx);
-		// void use(int idx, Character& target);
+		void unequip(int idx);
+		void use(int idx, ICharacter& target);
 };
 #endif

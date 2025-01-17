@@ -1,4 +1,4 @@
-name: CMake_x64
+name: CPP_TESTS_x64
 
 on:
   push:

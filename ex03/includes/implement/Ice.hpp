@@ -2,6 +2,7 @@
 # define __ICE_HPP__
 
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 # include <string>
 class Ice : public AMateria {
 	public:
